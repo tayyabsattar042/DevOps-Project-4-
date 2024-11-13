@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-deployment
+  labels:
+    app: nodejs-kubernetes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejs-kubernetes
+  template:
+    metadata:
+      labels:
+        app: nodejs-kubernetes
+    spec:
+      containers:
+        - name: nodejs-kubernetes
+          image: tayyab042/nodejs-kubernetes:latest
+          ports:
+            - containerPort: 3000
